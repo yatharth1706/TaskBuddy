@@ -1,6 +1,7 @@
 import '@/app/globals.css';
 import React from 'react';
 import TaskBuddyContextProvider from '@/context/TaskBuddyContextProvider';
+import { Toaster } from '@/components/ui/toaster';
 
 export default function RootLayout({
   children,
@@ -13,7 +14,10 @@ export default function RootLayout({
         <title>Task Buddy</title>
       </head>
       <body className="overflow-y-scroll">
-        <TaskBuddyContextProvider>{children}</TaskBuddyContextProvider>
+        <TaskBuddyContextProvider>
+          <main>{children}</main>
+        </TaskBuddyContextProvider>
+        <Toaster />
       </body>
     </html>
   );

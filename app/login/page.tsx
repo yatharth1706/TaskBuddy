@@ -12,7 +12,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { login, githubSignin } = useTaskBuddyContext();
+  const { login, githubSignin, isLoading } = useTaskBuddyContext();
 
   return (
     <div className="flex h-screen max-w-full items-center justify-center">
@@ -45,11 +45,12 @@ function Login() {
           variant={'outline'}
           className="btn-primary w-96 px-6 font-medium"
           onClick={() => login(email, password)}
+          disabled={isLoading}
         >
-          Sign in
+          {isLoading ? 'Signing in ...' : 'Sign in'}
         </Button>
         <span>Or</span>
-        <Button className="w-96" onClick={githubSignin}>
+        <Button className="w-96" onClick={githubSignin} disabled={isLoading}>
           <Github width={18} className="mr-2" />
           Sign in with Github
         </Button>

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Page() {
   return (
-    <div className="mx-auto flex h-auto max-w-7xl flex-col justify-center p-8">
+    <div className="mx-auto flex h-auto max-w-full flex-col justify-center p-6 sm:p-16">
       <img
         src="/HeroGradient.png"
         alt="hero gradient"
@@ -16,9 +16,11 @@ export default function Page() {
           Your virtual buddy who helps you keep track of your tasks and manage
           them easily
         </p>
-        <button className="btn-primary font-medium">Get Started</button>
+        <Link href="/login">
+          <button className="btn-primary font-medium">Get Started</button>
+        </Link>
       </div>
-      <div className="mt-8 flex w-full rounded-md border border-zinc-300 p-1">
+      <div className="mt-8 flex w-full rounded-md border-2 border-zinc-300 p-1">
         <img src="/Mockup1.png" alt="Mockup 1" className="object-cover" />
       </div>
     </div>

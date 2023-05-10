@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export default function Page() {
@@ -17,7 +18,9 @@ export default function Page() {
           them easily
         </p>
         <Link href="/login">
-          <button className="btn-primary font-medium">Get Started</button>
+          <Button variant={'outline'} className="btn-primary px-6 font-medium">
+            Get Started
+          </Button>
         </Link>
       </div>
       <div className="mt-8 flex w-full rounded-md border-2 border-zinc-300 p-1">

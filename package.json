@@ -14,12 +14,19 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@radix-ui/react-label": "2.0.1",
+    "@radix-ui/react-slot": "1.0.1",
+    "appwrite": "11.0.0",
+    "class-variance-authority": "0.6.0",
     "clsx": "1.2.1",
+    "lucide-react": "0.215.0",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "6.0.0-beta.2",
     "styled-jsx": "5.1.0",
+    "tailwind-merge": "1.12.0",
+    "tailwindcss-animate": "1.0.5",
     "use-count-up": "3.0.1"
   },
   "devDependencies": {

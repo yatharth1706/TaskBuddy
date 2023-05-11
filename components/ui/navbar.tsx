@@ -16,7 +16,7 @@ export default function Navbar() {
           Logout
         </button>
       </div>
-      <div className="flex w-full items-center space-x-6 border border-b border-zinc-200 px-6 pt-4">
+      <div className="flex w-full items-center space-x-6 border border-b border-zinc-200 px-6 pt-4 text-sm">
         <Link
           href="/ui/pages"
           className={

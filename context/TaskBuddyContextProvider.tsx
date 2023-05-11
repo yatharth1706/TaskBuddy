@@ -21,18 +21,28 @@ export default function TaskBuddyContextProvider({
   const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
     .setProject(process.env.PROJECT_ID as string);
+  const account = new Account(client);
+
+  const getCurrUser = async () => {
+    try {
+      const response = await account.get();
+      return response;
+    } catch (err) {
+      return null;
+    }
+  };
 
   const login = async (email: string, password: string) => {
     try {
       setIsLoading(true);
-      const account = new Account(client);
+      validateBeforeSignin(email, password);
 
       const response = await account.createEmailSession(email, password);
       toast({
         title: 'Success',
         description: 'Successfully logged in',
       });
-      router.push('/dashboard');
+      router.push('/ui/pages');
     } catch (err) {
       toast({
         title: 'Error',
@@ -46,8 +56,7 @@ export default function TaskBuddyContextProvider({
   const signup = async (name: string, email: string, password: string) => {
     try {
       setIsLoading(true);
-      const account = new Account(client);
-
+      validateBeforeSignup(name, email, password);
       const response = await account.create(ID.unique(), email, password, name);
       toast({
         title: 'Success',
@@ -64,14 +73,35 @@ export default function TaskBuddyContextProvider({
     }
   };
 
+  const logout = async () => {
+    const response = await account.deleteSessions();
+    router.push('/login');
+  };
+
+  const validateBeforeSignup = (
+    name: String,
+    email: String,
+    password: String,
+  ) => {
+    if (name.length === 0 || email.length === 0 || password.length === 0) {
+      throw new Error('Name / email / password all are required');
+    }
+  };
+
+  const validateBeforeSignin = (email: String, password: String) => {
+    if (email.length === 0 || password.length === 0) {
+      throw new Error('Email / Password are required');
+      return;
+    }
+  };
+
   const githubSignin = async () => {
     try {
       setIsLoading(true);
-      const account = new Account(client);
 
       const response = account.createOAuth2Session(
         'github',
-        'http://localhost:3000/dashboard',
+        'http://localhost:3000/ui/pages',
         'http://localhost:3000/login',
       );
     } catch (err) {
@@ -83,7 +113,7 @@ export default function TaskBuddyContextProvider({
 
   return (
     <TaskBuddyContext.Provider
-      value={{ login, signup, githubSignin, isLoading }}
+      value={{ login, signup, githubSignin, isLoading, getCurrUser, logout }}
     >
       {children}
     </TaskBuddyContext.Provider>

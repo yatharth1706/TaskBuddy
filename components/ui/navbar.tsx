@@ -9,9 +9,11 @@ export default function Navbar() {
   return (
     <>
       <div className="flex w-full items-center justify-between border border-b border-zinc-100 px-6 py-3">
-        <h2>
-          Task <span className="text-[#22BDFF]">Buddy</span>
-        </h2>
+        <Link href="/">
+          <h2 className="cursor-pointer">
+            Task <span className="text-[#22BDFF]">Buddy</span>
+          </h2>
+        </Link>
         <button className="py-1 text-sm font-light" onClick={logout}>
           Logout
         </button>

@@ -7,6 +7,8 @@ const nextConfig = {
   },
   env: {
     PROJECT_ID: process.env.PROJECT_ID,
+    DATABASE_ID: process.env.DATABASE_ID,
+    PAGE_COLLECTION_ID: process.env.PAGE_COLLECTION_ID,
   },
 };
 
